@@ -1,0 +1,189 @@
+<div class="json" style="display:none;"><%= @json %> </div>
+<section>
+  <div id="subscribe-section">  
+    <div class="container">  
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
+          <div class="newsletter-title text-center">
+            <h4>Stay Tuned With Online Music</h4>   
+          </div>
+          <!-- end newsletter-title -->
+       <form class="form-inline subscription-form mailchimp" id="searchform" method="POST" action="/search_post">
+            <!-- Subscription messages -->
+           <h5 class="subscription-success"></h5>  
+            <h5 class="subscription-error"></h5>
+            <!-- Email input -->
+            <div class="form-group newsletter-field">
+              <input type="text" name="searchq" class="form-control" id="subscriber-email" placeholder="Get the vamps songs">
+            </div> 
+            <!-- Subscribe button -->
+            <input type="submit" name="btnsubmit"  class="btn btn-sm btn-dark" id="sub-button"  value="Submit"> 
+           
+          </form>
+
+
+
+
+          <%= render "radios/search_form" %>
+        </div>
+        <!-- end col-sm-6 -->
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- end container -->
+  </div>
+  <!-- end subscribe-section -->
+</section>
+<!-- End subscribe section -->
+<section>
+  <div id="features-app-section-2" class="pad-sec">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 features-app-content-left animated fadeInLeft in" data-animation="fadeInLeft" data-delay="0">
+          <div class="section_header" id="rowH">
+            <h2>Intuitive. <span>Hip.</span> Online Music </h2>
+          </div>
+          <!-- End section_header -->
+          <p> Lorem ipsum <span>dolor</span> sit amet, consectetur adipisicing elit.Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+          <ul class="features-app-list">
+            <!-- feature -->
+            <li>
+              <div class="feature-app-box animated fadeInLeft in" data-animation="fadeInLeft" data-delay="0">
+                <div class="app-feature-icon pull-left">
+                  <span class="pe-7s-graph"></span>
+                </div>
+                <div class="feature-app-box-content">
+                  <h6>Beautiful, modern Mobile App</h6>
+                  <p>Mauris vehicula tortor id augue rutrum consequat ac at massa. Interdum et malesuada fames ac ante ipsum primis.</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="feature-app-box animated fadeInLeft in" data-animation="fadeInLeft" data-delay="0">
+                <div class="app-feature-icon pull-left">
+                  <span class="pe-7s-refresh-2"></span>
+                </div>
+                <div class="feature-app-box-content">
+                  <h6>Stunning flexibility</h6>
+                  <p>Phasellus consequat facilisis volutpat ma faucibus odio vitae semper. Ae volutpat lobortis.</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- End feature-content -->
+        <div class="col-sm-5 col-sm-offset-1 text-center img-app-right animated fadeInRight in" data-animation="fadeInRight" data-delay="0">
+          <figure>
+            <img src="assets/images/app/phone-2.png" alt="">
+          </figure>
+        </div>
+        <!-- End col-sm-8 -->
+      </div>
+      <!-- End row -->
+    </div>
+    <!-- End container -->
+  </div>
+  <!-- End feature-section -->
+</section>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 features-app-content-left animated fadeInLeft in" data-animation="fadeInLeft" data-delay="0">
+        <div class="section_header text-center ">
+          <h2>Original Pinoy Music </h2>
+        </div><%  @res_opm.each do |items_ar| %> <div class="player" style="width:90%;">
+          <div class="head">
+            <div class="back" style="background-image:none;background-color:gray;"></div>
+            <div class="front">
+              <div class="avatar">
+                <img src="
+											<%=  items_ar['pictures']['base_link'] %>" />
+              </div>
+              <div class="infos" style="max-width:60%;">
+                <div class="titulo_song text-right" style="font-size:16px;"><%=  items_ar["name"] %> </div>
+                <div class="duracao_song">
+                  <i class="fa fa-clock-o"> Total time <%=  items_ar["duration"] %> mins </i>
+                </div>
+                <div class="tags"><% if items_ar["tags"].length > 0 %> <span><%=  items_ar["tags"][0]["name"]  %> </span><% end %> </div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline">
+            <div class="soundline"></div>
+            <div class="controllers active">
+              <div class="back"></div>
+              <div class="play"></div>
+              <div class="forward"></div>
+            </div>
+          </div>
+        </div>
+        <div class="rotation"></div>
+        <br><%   end  %> &nbsp; &nbsp;
+      </div>
+      <div class="col-sm-6 features-app-content-left animated fadeInLeft in" data-animation="fadeInLeft" data-delay="0">
+        <div class="section_header text-center ">
+          <h2>90's Pop Playlist </h2>
+        </div><%  @res_pop.each do |items_ar| %> <div class="player" style="width:90%;">
+          <div class="head">
+             <div class="back" style="background-image:none;background-color:gray;"></div>
+            <div class="front">
+              <div class="avatar">
+
+                <% if items_ar["pictures"].length > 0 %>
+                <img src="<%=  items_ar['pictures']['base_link'] %>" />
+                  <% else %>
+                    <img src="#" />
+                <% end %>
+              </div>
+                  
+             <div class="infos" style="max-width:60%;">
+                <div class="titulo_song text-right" style="font-size:16px;">
+                  <%=  items_ar["name"] %> 
+                </div>
+                <div class="duracao_song">
+                  <i class="fa fa-clock-o"> Total time <%=  items_ar["duration"] %> mins </i>
+                </div>
+                <div class="tags">
+                    <% if items_ar["tags"].length > 0 %> 
+                      <span><%=  items_ar["tags"][0]["name"]  %> </span>
+                    <% end %> 
+                </div>
+             
+              </div><!----- Infos ----->
+              </div><!----- Front ----->
+                       </div><!----- HEad ----->
+          <div class="timeline">
+            <div class="soundline"></div>
+            <div class="controllers active">
+              <div class="back"></div>
+              <div class="play"></div>
+              <div class="forward"></div>
+            </div>
+          </div>
+        </div><!----- Player ----->
+        <div class="rotation"></div>
+        <br><%   end  %> &nbsp;
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div id="video-section" data-stellar-background-ratio="0" style="background-position: 50% 175.625px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <div class="video-section-content text-center">
+            <a href="" onclick="event.preventDefault();" class="video-pop-up">
+              <i class="fa fa-play"></i>
+            </a>
+            <div class="video-head">Introducing Videyos</div>
+            <div class="video-sub-heading">Check out our video presentation</div>
+          </div>
+        </div>
+        <!-- end col-sm-6 -->
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- end container -->
+  </div>
+</section>

@@ -1,0 +1,7 @@
+ 
+<% radios.each do |radio| %>
+  <br>
+  <%= link_to radio do %>
+    <%= highlight(radio.name, params.dig(:name_search)) %>
+  <% end %>
+<% end %>

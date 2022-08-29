@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @radio %>
+
+<div>
+  <%= link_to "Edit this radio", edit_radio_path(@radio) %> |
+  <%= link_to "Back to radios", radios_path %>
+
+  <%= button_to "Destroy this radio", @radio, method: :delete %>
+</div>

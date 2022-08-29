@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Radios</h1>
+
+<div id="radios">
+  <% @radios.each do |radio| %>
+    <%= render radio %>
+    <p>
+      <%= link_to "Show this radio", radio %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New radio", new_radio_path %>
